@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 )
 
 type no struct {
@@ -24,6 +25,14 @@ func (n no) div() {
 	} else {
 		fmt.Println(n.A / n.B)
 	}
+}
+func (n no) pow() {
+	c := math.Pow(n.A, n.B)
+	fmt.Println(c)
+}
+func (n no) lg() {
+	d := math.Log10(n.A) //Log10 returns the decimal logarithm of n.A
+	fmt.Println(d)       //printf("%.1f") gives round up value ones place after decimal
 }
 
 //	func diff(f float64, s float64) float64 {
@@ -52,20 +61,21 @@ func main() {
 	fmt.Println("enter no1")
 	//f, _ := reader.ReadString('\n')
 	fmt.Scan(&f)
-	fmt.Println("enter no2")
-	//s, _ := reader.ReadString('\n')
-	fmt.Scan(&s)
+	fmt.Println(`enter the operator from +,-,*,/,^,l`)
+	//var o rune
+	fmt.Scanf("%c", &o)
+	if o == 'l' {
+		goto w
+	} else {
+		fmt.Println("enter no2")
+		//s, _ := reader.ReadString('\n')
+		fmt.Scan(&s)
+	}
+w:
 	y := no{
 		A: f,
 		B: s,
 	}
-	fmt.Println(`enter the operator from 1-4 :
-        1.add
-	    2.diff
-	    3.product
-	    4.div`)
-	//var o rune
-	fmt.Scanf("%c", &o)
 
 	//reader := bufio.NewReader(os.Stdin)
 	// fmt.Println("enter 1 no: ")
@@ -86,6 +96,10 @@ func main() {
 		y.prd()
 	case '/':
 		y.div()
+	case '^':
+		y.pow()
+	case 'l':
+		y.lg()
 	default:
 		fmt.Println("invalid operator")
 	}
