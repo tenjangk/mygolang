@@ -9,14 +9,14 @@ type no struct {
 	B float64
 }
 
-func (n no) sum() float64 {
-	return n.A + n.B
+func (n no) sum() {
+	fmt.Println(n.A + n.B)
 }
-func (n no) diff() float64 {
-	return n.A - n.B
+func (n no) diff() {
+	fmt.Println(n.A - n.B)
 }
-func (n no) prd() float64 {
-	return n.A * n.B
+func (n no) prd() {
+	fmt.Println(n.A * n.B)
 }
 func (n no) div() {
 	if n.B == 0 {
@@ -42,23 +42,30 @@ func (n no) div() {
 //		}
 //	}
 func main() {
-	var f float64
-	var s float64
-	var operator rune
+	var (
+		f float64
+		s float64
+		o rune
+	)
+	//var o rune
+	//reader := bufio.NewReader(os.stdin)
 	fmt.Println("enter no1")
-	fmt.Scan(f)
+	//f, _ := reader.ReadString('\n')
+	fmt.Scan(&f)
 	fmt.Println("enter no2")
-	fmt.Scan(s)
+	//s, _ := reader.ReadString('\n')
+	fmt.Scan(&s)
+	y := no{
+		A: f,
+		B: s,
+	}
 	fmt.Println(`enter the operator from 1-4 :
         1.add
 	    2.diff
 	    3.product
 	    4.div`)
-	fmt.Scan(operator)
-	y := no{
-		A: f,
-		B: s,
-	}
+	//var o rune
+	fmt.Scanf("%c", &o)
 
 	//reader := bufio.NewReader(os.Stdin)
 	// fmt.Println("enter 1 no: ")
@@ -68,7 +75,7 @@ func main() {
 	// fmt.Println("enter operator:")
 	// o, _, _ := reader.ReadRune()
 
-	switch operator {
+	switch o {
 	case '+':
 		y.sum()
 
