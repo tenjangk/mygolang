@@ -30,54 +30,39 @@ func (n no) pow() {
 	c := math.Pow(n.A, n.B)
 	fmt.Println(c)
 }
-func (n no) lg() {
-	d := math.Log10(n.A)
-	fmt.Printf("%.3f", d)
-	fmt.Println("")
-}
 
 func main() {
 	var (
 		f, s float64
 		o    string
 	)
-
-	//reader := bufio.NewReader(os.Stdin)
 	fmt.Print("enter 1st no: ")
-	fmt.Scanln(&f)
-	// f, _:= reader.ReadString('\n')
-	// f1, err := strconv.ParseFloat(f, 64)
-	// if err != nil {
-	// 	fmt.Println(err)
-	// 	os.Exit(0)
-	// }
-
-	//s1, err :=fmt.Scanln(&s)
-	// s, _:= reader.ReadString('\n')
-	// s1, err := strconv.ParseFloat(s, 64)
-	// if err != nil {
-	// 	fmt.Println(err)
-	// 	os.Exit(0)
-	// }
-
-	//fmt.Println("enter no2")
-
-	fmt.Print(`enter the operator from +,-,*,/,^,log: `)
-
-	fmt.Scanln(&o)
-	if o == "log" {
-		goto w
-	} else {
-		fmt.Print("enter 2nd no: ")
-		fmt.Scanln(&s)
-		fmt.Printf("%.2f %s %.2f = ", f, o, s)
-
+	_, err := fmt.Scanln(&f)
+	if err != nil {
+		for err != nil {
+			fmt.Print("enter valid no: ")
+			_, err = fmt.Scanln(&f)
+		}
 	}
-w:
+
+	fmt.Print("enter 2nd no: ")
+	_, errr := fmt.Scanln(&s)
+	if errr != nil {
+		for errr != nil {
+			fmt.Print("enter valid no: ")
+			_, errr = fmt.Scanln(&s)
+		}
+	}
+
+	fmt.Print(`enter the operator from +,-,*,/,^: `)
+	fmt.Scanln(&o)
+	// f2 := float64(f1)
+	// s2 := float64(s1)
 	y := no{
 		A: f,
 		B: s,
 	}
+	fmt.Printf("%.2f %s %.2f = ", f, o, s)
 
 	switch o {
 	case "+":
@@ -92,8 +77,6 @@ w:
 		y.div()
 	case "^":
 		y.pow()
-	case "log":
-		y.lg()
 	default:
 		fmt.Println("invalid operator")
 	}

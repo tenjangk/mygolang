@@ -1,3 +1,3 @@
-module calulator
+module main
 
 go 1.19
