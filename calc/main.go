@@ -38,15 +38,18 @@ func main() {
 	)
 	fmt.Print("enter 1st no: ")
 	_, err := fmt.Scanln(&f)
+	fmt.Println("error", err)
 	if err != nil {
 		for err != nil {
 			fmt.Print("enter valid no: ")
 			_, err = fmt.Scanln(&f)
+			//fmt.Println")
 		}
 	}
 
 	fmt.Print("enter 2nd no: ")
 	_, errr := fmt.Scanln(&s)
+	fmt.Println("error", errr)
 	if errr != nil {
 		for errr != nil {
 			fmt.Print("enter valid no: ")
